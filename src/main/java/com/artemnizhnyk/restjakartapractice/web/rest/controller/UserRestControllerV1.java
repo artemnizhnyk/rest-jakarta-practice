@@ -3,6 +3,8 @@ package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 import com.artemnizhnyk.restjakartapractice.domain.model.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
+import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
+import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
@@ -21,6 +23,7 @@ import java.util.List;
 public class UserRestControllerV1 {
     @Inject
     private UserService userService;
+    private TaskMapper taskMapper;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @GET
@@ -40,21 +43,21 @@ public class UserRestControllerV1 {
     @GET
     @Path("/users/{id}/tasks")
     @Produces("application/json")
-    List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
+    public List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
         List<Task> tasksByUserId = userService.getTasksByUserId(userId);
-        tasksByUserId.stream().map()
-        return new ArrayList<>();
+
+        return tasksByUserId.stream().map(taskMapper::toDto).toList();
     }
 
-    TaskDto createTask() {
+    public TaskDto createTask() {
         return null;
     }
 
-    UserDto updateUser() {
+    public UserDto updateUser() {
         return null;
     }
 
-    AnswerDto deleteUser() {
+    public AnswerDto deleteUser() {
         return null;
     }
 }

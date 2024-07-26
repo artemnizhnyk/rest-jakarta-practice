@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Task> getTasksByUserId(final Long id) {
-        return null;
+        return userRepository.(id);;
     }
 
     @Override
