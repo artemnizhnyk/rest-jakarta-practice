@@ -3,11 +3,9 @@ package com.artemnizhnyk.restjakartapractice.repository.impl;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.Dependent;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Named;
-import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {

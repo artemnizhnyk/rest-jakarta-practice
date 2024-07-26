@@ -1,5 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 
+import com.artemnizhnyk.restjakartapractice.domain.model.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
@@ -36,7 +37,12 @@ public class UserRestControllerV1 {
         return userDto;
     }
 
-    List<TaskDto> getTasksByUserId() {
+    @GET
+    @Path("/users/{id}/tasks")
+    @Produces("application/json")
+    List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
+        List<Task> tasksByUserId = userService.getTasksByUserId(userId);
+        tasksByUserId.stream().map()
         return new ArrayList<>();
     }
 
