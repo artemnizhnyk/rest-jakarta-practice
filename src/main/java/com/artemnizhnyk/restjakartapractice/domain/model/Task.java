@@ -21,7 +21,9 @@ public class Task {
     private String name;
     private String description;
     @Enumerated(value = EnumType.STRING)
+    @Column(name="task_status")
     private TaskStatus taskStatus;
+    @Column(name="expires_at")
     private LocalDateTime expiresAt;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne

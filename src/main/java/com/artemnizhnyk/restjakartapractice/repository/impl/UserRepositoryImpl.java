@@ -8,7 +8,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {
@@ -34,6 +36,19 @@ public class UserRepositoryImpl implements UserRepository {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
+
+        List<Task> tasksByUserId = entityManager.createNativeQuery("select * from tasks t where user_id=:userId", Task.class)
+                .setParameter("userId", userId)
+                .getResultList();
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        entityManagerFactory.close();
+        if (Objects.isNull(tasksByUserId)) {
+            return new ArrayList<>();
+        }
+        return tasksByUserId;
+
     }
 
     private EntityManagerFactory getEntityManagerFactory() {

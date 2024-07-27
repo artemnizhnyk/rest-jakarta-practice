@@ -23,6 +23,7 @@ import java.util.List;
 public class UserRestControllerV1 {
     @Inject
     private UserService userService;
+    @Inject
     private TaskMapper taskMapper;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
