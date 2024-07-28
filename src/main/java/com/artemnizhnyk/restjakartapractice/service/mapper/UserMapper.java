@@ -4,6 +4,6 @@ import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "cdi")
+@Mapper(componentModel = "jakarta-cdi")
 public interface UserMapper extends Mappable<User, UserDto>{
 }
