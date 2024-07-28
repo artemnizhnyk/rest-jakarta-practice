@@ -4,6 +4,7 @@ import com.artemnizhnyk.restjakartapractice.domain.model.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
+import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
@@ -24,20 +25,15 @@ public class UserRestControllerV1 {
     private UserService userService;
     @Inject
     private TaskMapper taskMapper;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    @Inject
+    private UserMapper userMapper;
 
     @GET
     @Path("users/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public UserDto getUserById(@PathParam("id") final Long id) {
         User userById = userService.getUserById(id);
-        UserDto userDto = UserDto.builder()
-                .id(userById.getId())
-                .username(userById.getUsername())
-                .password(userById.getPassword())
-                .tasks(new ArrayList<>())
-                .build();
-        return userDto;
+        return userMapper.toDto(userById);
     }
 
     @GET
