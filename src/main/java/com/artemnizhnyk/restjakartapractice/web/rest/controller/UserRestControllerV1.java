@@ -8,28 +8,25 @@ import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Path("v1")
+@Path("v1/users/")
 public class UserRestControllerV1 {
     @Inject
     private UserService userService;
+    @Inject
+    private TaskService taskService;
     @Inject
     private TaskMapper taskMapper;
     @Inject
     private UserMapper userMapper;
 
     @GET
-    @Path("users/{id}")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public UserDto getUserById(@PathParam("id") final Long id) {
         User userById = userService.getUserById(id);
@@ -37,7 +34,7 @@ public class UserRestControllerV1 {
     }
 
     @GET
-    @Path("users/{id}/tasks")
+    @Path("{id}/tasks")
     @Produces(MediaType.APPLICATION_JSON)
     public List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
         List<Task> tasksByUserId = userService.getTasksByUserId(userId);
@@ -45,15 +42,26 @@ public class UserRestControllerV1 {
         return tasksByUserId.stream().map(taskMapper::toDto).toList();
     }
 
-    public TaskDto createTask() {
-        return null;
+    @POST
+    @Path("/{id}/tasks")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public TaskDto createTask(@PathParam("id") final Long userId,
+                             final TaskDto taskDto) {
+        return taskService.createTask(userId, taskDto);
     }
 
-    public UserDto updateUser() {
-        return null;
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserDto updateUser(final UserDto userDto) {
+        return userService.updateUser(userDto);
     }
 
-    public AnswerDto deleteUser() {
-        return null;
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public AnswerDto deleteUser(final UserDto userDto) {
+        return AnswerDto.makeDefault(true);
     }
 }
