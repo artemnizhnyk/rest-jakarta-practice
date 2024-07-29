@@ -18,6 +18,7 @@
     </properties>
 
     <dependencies>
+
         <!--JAKARTA SPEC-->
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -58,12 +59,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.3.1.Final</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>4.0.3</version>
@@ -75,11 +70,23 @@
             <version>5.1.2.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
         <!--DB-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.3.1.Final</version>
         </dependency>
 
         <!--OTHER-->
@@ -95,7 +102,6 @@
             <artifactId>mapstruct</artifactId>
             <version>1.5.5.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
@@ -138,7 +144,6 @@
             <version>3.26.3</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

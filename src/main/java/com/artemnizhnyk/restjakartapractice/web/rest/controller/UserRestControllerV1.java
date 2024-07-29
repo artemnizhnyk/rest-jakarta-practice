@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("v1/users/")
+@Path("/v1/users/")
 public class UserRestControllerV1 {
     @Inject
     private UserService userService;
@@ -27,7 +27,7 @@ public class UserRestControllerV1 {
     private UserMapper userMapper;
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public UserDto getUserById(@PathParam("id") final Long id) {
         User userById = userService.getUserById(id);
@@ -35,11 +35,10 @@ public class UserRestControllerV1 {
     }
 
     @GET
-    @Path("{id}/tasks")
+    @Path("/{id}/tasks")
     @Produces(MediaType.APPLICATION_JSON)
     public List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
         List<Task> tasksByUserId = taskService.getTasksByUserId(userId);
-
         return tasksByUserId.stream().map(taskMapper::toDto).toList();
     }
 

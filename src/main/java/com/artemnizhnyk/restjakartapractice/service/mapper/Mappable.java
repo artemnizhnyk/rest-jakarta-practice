@@ -1,7 +1,5 @@
 package com.artemnizhnyk.restjakartapractice.service.mapper;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.Task;
-
 import java.util.List;
 
 public interface Mappable<E, D> {
