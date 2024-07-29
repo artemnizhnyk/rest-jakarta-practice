@@ -38,7 +38,7 @@ public class UserRestControllerV1 {
     @Path("{id}/tasks")
     @Produces(MediaType.APPLICATION_JSON)
     public List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
-        List<Task> tasksByUserId = userService.getTasksByUserId(userId);
+        List<Task> tasksByUserId = taskService.getTasksByUserId(userId);
 
         return tasksByUserId.stream().map(taskMapper::toDto).toList();
     }

@@ -23,16 +23,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Task> getTasksByUserId(final Long id) {
-        return userRepository.tasksByUserId(id);
-    }
-
-    @Override
-    public Task createTask(final TaskDto taskDto) {
-        return null;
-    }
-
-    @Override
     public User updateUser(UserDto userDto) {
         return null;
     }

@@ -11,10 +11,6 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    List<Task> getTasksByUserId(Long id);
-
-    Task createTask(TaskDto taskDto);
-
     User updateUser(UserDto userDto);
 
     boolean deleteUserById(Long id);

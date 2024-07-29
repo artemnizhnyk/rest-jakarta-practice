@@ -1,7 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.Task;
-import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
 
 import java.util.List;
