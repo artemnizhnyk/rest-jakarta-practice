@@ -2,6 +2,7 @@ package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
 import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
@@ -48,14 +49,16 @@ public class UserRestControllerV1 {
     @Produces(MediaType.APPLICATION_JSON)
     public TaskDto createTask(@PathParam("id") final Long userId,
                              final TaskDto taskDto) {
-        return taskService.createTask(userId, taskDto);
+        Task createdTask = taskService.createTask(userId, taskDto);
+        return taskMapper.toDto(createdTask);
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public UserDto updateUser(final UserDto userDto) {
-        return userService.updateUser(userDto);
+        User updatedUser = userService.updateUser(userDto);
+        return userMapper.toDto(updatedUser);
     }
 
     @DELETE
