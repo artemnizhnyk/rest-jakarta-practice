@@ -3,7 +3,9 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-    <persistence-unit name="default">
+    <persistence-unit name="task-list" transaction-type="JTA">
+        <jta-data-source>java:comp/env/jdbc/task-list</jta-data-source>
+
         <class>com.artemnizhnyk.restjakartapractice.domain.model.User</class>
         <class>com.artemnizhnyk.restjakartapractice.domain.model.Task</class>
 

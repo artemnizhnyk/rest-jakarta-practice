@@ -1,9 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.web.dto;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.Task;
 import lombok.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
