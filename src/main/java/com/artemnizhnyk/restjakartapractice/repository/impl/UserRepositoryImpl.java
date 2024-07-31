@@ -4,15 +4,13 @@ import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {
 
-    @PersistenceContext(name = "task-list")
-    private EntityManager entityManager;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
     public User getUserById(Long id) {
@@ -29,8 +27,8 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
-    private EntityManagerFactory getEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("default");
-    }
+//    private EntityManagerFactory getEntityManagerFactory() {
+//        return Persistence.createEntityManagerFactory("default");
+//    }
 
 }
