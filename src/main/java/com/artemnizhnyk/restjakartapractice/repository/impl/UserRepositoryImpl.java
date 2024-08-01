@@ -6,7 +6,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
+
+import java.util.Optional;
 
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {
@@ -47,7 +48,18 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User updateUser(User user) {
-        return null;
+        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+             EntityManager entityManager = entityManagerFactory.createEntityManager()
+        ) {
+            entityManager.getTransaction().begin();
+
+            Optional.ofNullable(entityManager.find(User.class, user.getId())).orElseThrow(RuntimeException::new);
+
+            User updatedUser = entityManager.merge(user);
+
+            entityManager.getTransaction().commit();
+            return updatedUser;
+        }
     }
 
     @Override

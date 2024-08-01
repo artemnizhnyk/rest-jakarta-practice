@@ -64,7 +64,7 @@ public class UserRestControllerV1 {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public UserDto updateUser(final UserDto userDto) {
-        User updatedUser = userService.updateUser(userDto);
+        User updatedUser = userService.updateUser(userMapper.toEntity(userDto));
         return userMapper.toDto(updatedUser);
     }
 
