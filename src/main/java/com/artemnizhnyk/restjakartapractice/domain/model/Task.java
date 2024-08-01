@@ -18,14 +18,15 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String name;
     private String description;
     @Enumerated(value = EnumType.STRING)
     @Column(name="task_status")
     private TaskStatus taskStatus;
-    @Column(name="expires_at")
+    @Column(name="expires_at", nullable = false)
     private LocalDateTime expiresAt;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     @ManyToOne
     private User user;
 }

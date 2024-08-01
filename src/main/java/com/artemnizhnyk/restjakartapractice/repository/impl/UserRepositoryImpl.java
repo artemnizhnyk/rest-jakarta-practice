@@ -16,22 +16,33 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserById(Long id) {
-        EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        entityManager.getTransaction().begin();
+        User user;
+        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+             EntityManager entityManager = entityManagerFactory.createEntityManager()
+        ) {
+            entityManager.getTransaction().begin();
 
-        User user = entityManager.find(User.class, id);
+            user = entityManager.find(User.class, id);
 
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        entityManagerFactory.close();
-        return user;
+            entityManager.getTransaction().commit();
+            return user;
+        }
     }
 
     @Override
     public User createUser(User transientUser) {
-        return null;
+        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+             EntityManager entityManager = entityManagerFactory.createEntityManager()
+        ) {
+            entityManager.getTransaction().begin();
+
+            entityManager.persist(transientUser);
+            User user = entityManager.find(User.class, transientUser.getId());
+
+            entityManager.getTransaction().commit();
+            return user;
+        }
     }
 
     @Override
@@ -40,7 +51,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean deleteByUserId(Long id) {
         return false;
     }
 

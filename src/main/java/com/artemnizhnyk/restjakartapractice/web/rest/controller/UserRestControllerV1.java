@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/v1/users/")
+@Path("/v1/users")
 public class UserRestControllerV1 {
     @Inject
     private UserService userService;
@@ -50,6 +50,14 @@ public class UserRestControllerV1 {
                              final TaskDto taskDto) {
         Task createdTask = taskService.createTask(userId, taskDto);
         return taskMapper.toDto(createdTask);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserDto createUser(final UserDto userDto) {
+        User createdUser = userService.createUser(userMapper.toEntity(userDto));
+        return userMapper.toDto(createdUser);
     }
 
     @PUT
