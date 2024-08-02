@@ -7,5 +7,5 @@ public interface UserRepository {
     User getUserById(Long id);
     User createUser(User transientUser);
     User updateUser(User user);
-    boolean deleteByUserId(Long UserId);
+    boolean deleteUser(User User);
 }

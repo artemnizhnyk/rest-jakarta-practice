@@ -47,7 +47,7 @@ public class UserRestControllerV1 {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public TaskDto createTask(@PathParam("id") final Long userId,
-                             final TaskDto taskDto) {
+                              final TaskDto taskDto) {
         Task createdTask = taskService.createTask(userId, taskDto);
         return taskMapper.toDto(createdTask);
     }
@@ -69,9 +69,11 @@ public class UserRestControllerV1 {
     }
 
     @DELETE
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public AnswerDto deleteUser(final UserDto userDto) {
-        return AnswerDto.makeDefault(true);
+    public AnswerDto deleteUser(@PathParam("id") final Long id) {
+        boolean isDeleted = userService.deleteUserById(id);
+        return AnswerDto.makeDefault(isDeleted);
     }
 }

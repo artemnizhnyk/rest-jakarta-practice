@@ -7,6 +7,8 @@ import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.Objects;
+
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 
@@ -25,12 +27,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(final User user) {
+        User userById = getUserById(user.getId());
+        if (Objects.isNull(userById)) {
+            throw new RuntimeException();
+        }
         return userRepository.updateUser(user);
     }
 
     @Override
     public boolean deleteUserById(Long id) {
-        return false;
+        User userById = getUserById(id);
+        if (Objects.isNull(userById)) {
+            throw new RuntimeException();
+        }
+        return userRepository.deleteUser(userById);
     }
 
 

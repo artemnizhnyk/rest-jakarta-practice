@@ -16,7 +16,7 @@ public class UserRepositoryImpl implements UserRepository {
 //    EntityManager entityManager;
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(final Long id) {
 
         User user;
         try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User createUser(User transientUser) {
+    public User createUser(final User transientUser) {
         try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
@@ -47,13 +47,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User updateUser(User user) {
+    public User updateUser(final User user) {
         try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
             entityManager.getTransaction().begin();
-
-            Optional.ofNullable(entityManager.find(User.class, user.getId())).orElseThrow(RuntimeException::new);
 
             User updatedUser = entityManager.merge(user);
 
@@ -63,8 +61,18 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean deleteByUserId(Long id) {
-        return false;
+    public boolean deleteUser(final User user) {
+        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+             EntityManager entityManager = entityManagerFactory.createEntityManager()
+        ) {
+            entityManager.getTransaction().begin();
+
+            User merged = entityManager.merge(user);
+            entityManager.remove(merged);
+
+            entityManager.getTransaction().commit();
+            return true;
+        }
     }
 
     private EntityManagerFactory getEntityManagerFactory() {
