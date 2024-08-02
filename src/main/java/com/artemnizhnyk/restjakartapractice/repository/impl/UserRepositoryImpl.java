@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUserById(final Long id) {
 
         User user;
-        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");;
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
             entityManager.getTransaction().begin();
@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User createUser(final User transientUser) {
-        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");;
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
             entityManager.getTransaction().begin();
@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User updateUser(final User user) {
-        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");;
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
             entityManager.getTransaction().begin();
@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean deleteUser(final User user) {
-        try (EntityManagerFactory entityManagerFactory = getEntityManagerFactory();
+        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");;
              EntityManager entityManager = entityManagerFactory.createEntityManager()
         ) {
             entityManager.getTransaction().begin();
@@ -71,10 +71,6 @@ public class UserRepositoryImpl implements UserRepository {
             entityManager.getTransaction().commit();
             return true;
         }
-    }
-
-    private EntityManagerFactory getEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("default");
     }
 
 }

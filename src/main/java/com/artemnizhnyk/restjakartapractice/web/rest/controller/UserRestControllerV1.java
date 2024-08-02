@@ -48,7 +48,7 @@ public class UserRestControllerV1 {
     @Produces(MediaType.APPLICATION_JSON)
     public TaskDto createTask(@PathParam("id") final Long userId,
                               final TaskDto taskDto) {
-        Task createdTask = taskService.createTask(userId, taskDto);
+        Task createdTask = taskService.createTask(userId, taskMapper.toEntity(taskDto));
         return taskMapper.toDto(createdTask);
     }
 
