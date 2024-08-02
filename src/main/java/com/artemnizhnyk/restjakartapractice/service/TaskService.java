@@ -1,7 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.Task;
-import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
+import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public interface TaskService {
 
     List<Task> getTasksByUserId(final Long userId);
 
-    Task createTask(final Long userId, final TaskDto taskDto);
+    Task createTask(final Long userId, final Task task);
 
     Task updateTask(final Task task);
 

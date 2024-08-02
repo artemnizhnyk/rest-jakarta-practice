@@ -3,7 +3,6 @@ package com.artemnizhnyk.restjakartapractice.service.impl;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
-import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -27,8 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(final User user) {
-        User userById = getUserById(user.getId());
-        if (Objects.isNull(userById)) {
+        User obtainedUser = getUserById(user.getId());
+        if (Objects.isNull(obtainedUser)) {
             throw new RuntimeException();
         }
         return userRepository.updateUser(user);

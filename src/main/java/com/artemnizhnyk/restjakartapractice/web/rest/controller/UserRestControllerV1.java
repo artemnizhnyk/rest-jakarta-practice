@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.Task;
+import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.UserService;

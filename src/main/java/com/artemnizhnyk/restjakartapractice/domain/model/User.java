@@ -1,5 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.domain.model;
 
+import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -9,7 +9,7 @@
 
 
 <!--        <class>com.artemnizhnyk.restjakartapractice.domain.model.User</class>-->
-<!--        <class>com.artemnizhnyk.restjakartapractice.domain.model.Task</class>-->
+<!--        <class>com.artemnizhnyk.restjakartapractice.domain.model.task.Task</class>-->
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5437/task-list"/>

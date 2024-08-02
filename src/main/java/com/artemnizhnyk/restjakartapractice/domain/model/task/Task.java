@@ -1,5 +1,6 @@
-package com.artemnizhnyk.restjakartapractice.domain.model;
+package com.artemnizhnyk.restjakartapractice.domain.model.task;
 
+import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class Task {
     private String description;
     @Enumerated(value = EnumType.STRING)
     @Column(name="task_status")
-    private TaskStatus taskStatus;
+    private Status status;
     @Column(name="expires_at", nullable = false)
     private LocalDateTime expiresAt;
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
