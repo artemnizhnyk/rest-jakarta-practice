@@ -1,12 +1,19 @@
 package com.artemnizhnyk.restjakartapractice.service.impl;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.Task;
+import com.artemnizhnyk.restjakartapractice.repository.TaskRepository;
 import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
+@ApplicationScoped
 public class TaskServiceImpl implements TaskService {
+
+    @Inject
+    private TaskRepository taskRepository;
 
     @Override
     public Task getTaskById(Long id) {
@@ -24,7 +31,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTask(TaskDto taskDto) {
+    public Task updateTask(Task task) {
         return null;
     }
 
