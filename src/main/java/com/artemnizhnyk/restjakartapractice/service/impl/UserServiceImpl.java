@@ -5,9 +5,11 @@ import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import java.util.Objects;
 
+@Named
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 

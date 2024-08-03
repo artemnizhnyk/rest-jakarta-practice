@@ -5,10 +5,14 @@ import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
+@Named
+@RequestScoped
 @Path("/v1/tasks")
 public class TaskRestControllerV1 {
 

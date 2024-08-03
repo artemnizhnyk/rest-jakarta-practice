@@ -3,45 +3,31 @@ package com.artemnizhnyk.restjakartapractice.repository.impl;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
+@Named
 @ApplicationScoped
 public class UserRepositoryImpl implements UserRepository {
 
-//    @PersistenceContext
-//    EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public User getUserById(final Long id) {
-
-        User user;
-        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-             EntityManager entityManager = entityManagerFactory.createEntityManager()
-        ) {
-            entityManager.getTransaction().begin();
-
-            user = entityManager.find(User.class, id);
-
-            entityManager.getTransaction().commit();
-            return user;
-        }
+        return entityManager.find(User.class, id);
     }
 
+    @Transactional
     @Override
-    public User createUser(final User transientUser) {
-        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-             EntityManager entityManager = entityManagerFactory.createEntityManager()
-        ) {
-            entityManager.getTransaction().begin();
+    public User createUser(User transientUser) {
 
             entityManager.persist(transientUser);
-            User user = entityManager.find(User.class, transientUser.getId());
-
-            entityManager.getTransaction().commit();
-            return user;
-        }
+            return transientUser;
     }
 
     @Override
