@@ -6,8 +6,6 @@ import com.artemnizhnyk.restjakartapractice.repository.TaskRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
@@ -21,17 +19,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Task getTaskById(final Long id) {
-        Task task;
-        try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-             EntityManager entityManager = entityManagerFactory.createEntityManager()
-        ) {
-            entityManager.getTransaction().begin();
-
-            task = entityManager.find(Task.class, id);
-
-            entityManager.getTransaction().commit();
-            return task;
-        }
+        return entityManager.find(Task.class, id);
     }
 
     @Override
@@ -55,8 +43,8 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public boolean deleteTask(final Task task) {
-            Task mergedTask = entityManager.merge(task);
-            entityManager.remove(mergedTask);
-            return true;
+        Task mergedTask = entityManager.merge(task);
+        entityManager.remove(mergedTask);
+        return true;
     }
 }
