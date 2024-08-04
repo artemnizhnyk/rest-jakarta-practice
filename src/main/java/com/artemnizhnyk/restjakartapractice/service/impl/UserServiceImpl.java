@@ -39,10 +39,8 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUserById(Long id) {
         User userById = getUserById(id);
         if (Objects.isNull(userById)) {
-            throw new RuntimeException();
+            return false;
         }
         return userRepository.deleteUser(userById);
     }
-
-
 }

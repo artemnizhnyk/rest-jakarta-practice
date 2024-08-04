@@ -4,12 +4,14 @@ import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import com.artemnizhnyk.restjakartapractice.repository.TaskRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.util.List;
 
+@Named
 @ApplicationScoped
 public class TaskRepositoryImpl implements TaskRepository {
 

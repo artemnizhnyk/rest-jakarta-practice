@@ -20,22 +20,3 @@
     </persistence-unit>
 
 </persistence>
-
-        <!--    <persistence-unit name="default" transaction-type="JTA">-->
-        <!--        <jta-data-source>jdbc/task-list</jta-data-source>-->
-        <!--        <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
-
-        <!--        <properties>-->
-        <!--            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>-->
-        <!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5437/task-list"/>-->
-        <!--            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
-        <!--            <property name="jakarta.persistence.jdbc.user" value="postgres"/>-->
-        <!--            <property name="jakarta.persistence.jdbc.password" value="postgres"/>-->
-
-        <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
-        <!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
-        <!--            <property name="hibernate.show_sql" value="true"/>-->
-        <!--            <property name="hibernate.format_sql" value="true"/>-->
-        <!--        </properties>-->
-
-        <!--    </persistence-unit>-->
