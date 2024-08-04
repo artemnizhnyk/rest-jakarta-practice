@@ -39,7 +39,6 @@
             <version>6.5.2.Final</version>
         </dependency>
 
-
         <!-- Other -->
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -28,6 +28,9 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getTasksByUserId(final Long userId) {
         User userById = userService.getUserById(userId);
+        if (Objects.isNull(userById)) {
+            throw new RuntimeException();
+        }
         return taskRepository.getTasksByUser(userById);
     }
 
@@ -37,8 +40,10 @@ public class TaskServiceImpl implements TaskService {
             task.setStatus(Status.IN_PROGRESS);
         }
         User user = userService.getUserById(userId);
+        if (Objects.isNull(user)) {
+            throw new RuntimeException();
+        }
         task.setUser(user);
-
         return taskRepository.createTask(task);
     }
 
@@ -55,7 +60,7 @@ public class TaskServiceImpl implements TaskService {
     public boolean deleteTaskById(final Long id) {
         Task task = getTaskById(id);
         if (Objects.isNull(task)) {
-            throw new RuntimeException();
+            return false;
         }
         return taskRepository.deleteTask(task);
     }
