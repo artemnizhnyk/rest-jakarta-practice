@@ -32,7 +32,7 @@ public class TaskRestControllerV1 {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public TaskDto updateUser(final TaskDto taskDto) {
+    public TaskDto updateTask(final TaskDto taskDto) {
         Task updatedUser = taskService.updateTask(taskMapper.toEntity(taskDto));
         return taskMapper.toDto(updatedUser);
     }
@@ -41,7 +41,7 @@ public class TaskRestControllerV1 {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public AnswerDto deleteUser(@PathParam("id") final Long id) {
+    public AnswerDto deleteTask(@PathParam("id") final Long id) {
         boolean isDeleted = taskService.deleteTaskById(id);
         return AnswerDto.makeDefault(isDeleted);
     }

@@ -1,8 +1,8 @@
-package com.artemnizhnyk.restjakartapractice;
+package com.artemnizhnyk.restjakartapractice.config;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("/api")
-public class RestConfiguration extends Application {
+public class RestConfig extends Application {
 }
