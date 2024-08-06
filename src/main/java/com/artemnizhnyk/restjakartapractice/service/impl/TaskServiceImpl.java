@@ -1,5 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service.impl;
 
+import com.artemnizhnyk.restjakartapractice.domain.exception.ResourceNotFoundException;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Status;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
@@ -22,7 +23,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task getTaskById(final Long id) {
-        return taskRepository.getTaskById(id);
+        Task taskById = taskRepository.getTaskById(id);
+        if (Objects.isNull(taskById)) {
+            throw new ResourceNotFoundException(String.format("Task with id: %d, wasn't found", id));
+        }
+        return taskById;
     }
 
     @Override
