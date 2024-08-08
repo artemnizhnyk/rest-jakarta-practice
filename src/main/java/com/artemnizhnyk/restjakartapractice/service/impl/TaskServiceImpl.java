@@ -10,6 +10,7 @@ import com.artemnizhnyk.restjakartapractice.service.UserService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,7 +35,7 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> getTasksByUserId(final Long userId) {
         User userById = userService.getUserById(userId);
         if (Objects.isNull(userById)) {
-            throw new RuntimeException();
+           return new ArrayList<>();
         }
         return taskRepository.getTasksByUser(userById);
     }
@@ -56,7 +57,7 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(final Task task) {
         Task obtainedTask = getTaskById(task.getId());
         if (Objects.isNull(obtainedTask)) {
-            throw new RuntimeException();
+            throw new ResourceNotFoundException(String.format("Task with id: %d, wasn't found", task.getId()));
         }
         return taskRepository.updateTask(task);
     }
