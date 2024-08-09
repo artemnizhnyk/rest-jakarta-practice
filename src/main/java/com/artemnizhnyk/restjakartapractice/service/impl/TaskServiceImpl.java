@@ -47,7 +47,7 @@ public class TaskServiceImpl implements TaskService {
         }
         User user = userService.getUserById(userId);
         if (Objects.isNull(user)) {
-            throw new RuntimeException();
+            throw new ResourceNotFoundException(String.format("User with id: %d, wasn't found", userId));
         }
         task.setUser(user);
         return taskRepository.createTask(task);

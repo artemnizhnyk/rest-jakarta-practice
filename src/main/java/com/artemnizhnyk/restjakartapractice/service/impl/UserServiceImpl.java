@@ -1,5 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service.impl;
 
+import com.artemnizhnyk.restjakartapractice.domain.exception.ResourceNotFoundException;
 import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
@@ -18,7 +19,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(final Long id) {
-        return userRepository.getUserById(id);
+        User userById = userRepository.getUserById(id);
+        if (Objects.isNull(userById)) {
+            throw new ResourceNotFoundException(String.format("User with id: %d, wasn't found", id));
+        }
+        return userById;
     }
 
     @Override
@@ -30,7 +35,7 @@ public class UserServiceImpl implements UserService {
     public User updateUser(final User user) {
         User obtainedUser = getUserById(user.getId());
         if (Objects.isNull(obtainedUser)) {
-            throw new RuntimeException();
+            throw new ResourceNotFoundException(String.format("User with id: %d, wasn't found", user.getId()));
         }
         return userRepository.updateUser(user);
     }
