@@ -2,7 +2,8 @@ package com.artemnizhnyk.restjakartapractice.config;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Named;
+import jakarta.enterprise.context.Initialized;
+import jakarta.enterprise.event.Observes;
 
 @DataSourceDefinition(
         name = "java:app/jdbc/appDataSource",
@@ -10,7 +11,9 @@ import jakarta.inject.Named;
         url = "jdbc:postgresql://localhost:5437/task-list",
         user = "postgres",
         password = "postgres")
-@Named
 @ApplicationScoped
 public class DBConfig {
+
+    private void init(@Observes @Initialized(ApplicationScoped.class) Object object) {
+    }
 }
