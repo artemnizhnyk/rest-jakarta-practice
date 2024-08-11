@@ -20,6 +20,13 @@ public class UserRepositoryImpl implements UserRepository {
         return entityManager.find(User.class, id);
     }
 
+    @Override
+    public User getUserByUsername(final String username) {
+        return (User) entityManager.createQuery("select u from User u where u.username = :username")
+                .setParameter("username", username)
+                .getSingleResult();
+    }
+
     @Transactional
     @Override
     public User createUser(User transientUser) {
@@ -36,8 +43,8 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     @Override
     public boolean deleteUser(final User user) {
-            User mergedUser = entityManager.merge(user);
-            entityManager.remove(mergedUser);
-            return true;
+        User mergedUser = entityManager.merge(user);
+        entityManager.remove(mergedUser);
+        return true;
     }
 }

@@ -39,6 +39,13 @@ public class UserRestControllerV1 {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserDto getUserByUsername(@QueryParam("username") final String username) {
+        User userByUsername = userService.getUserByUsername(username);
+        return userMapper.toDto(userByUsername);
+    }
+
+    @GET
     @Path("/{id}/tasks")
     @Produces(MediaType.APPLICATION_JSON)
     public List<TaskDto> getTasksByUserId(@PathParam("id") final Long userId) {
