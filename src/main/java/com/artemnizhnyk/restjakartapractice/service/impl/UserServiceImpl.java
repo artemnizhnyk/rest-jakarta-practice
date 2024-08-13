@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     public User getUserByUsername(final String username) {
         User userByUsername = userRepository.getUserByUsername(username);
         if (Objects.isNull(userByUsername)) {
-            throw new ResourceNotFoundException(String.format("User with username: %d, wasn't found", username));
+            throw new ResourceNotFoundException(String.format("User with username: %s, wasn't found", username));
         }
         return userByUsername;
     }

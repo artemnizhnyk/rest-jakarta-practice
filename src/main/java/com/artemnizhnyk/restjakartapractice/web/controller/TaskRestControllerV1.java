@@ -1,10 +1,12 @@
 package com.artemnizhnyk.restjakartapractice.web.controller;
 
+import com.artemnizhnyk.restjakartapractice.domain.model.User;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
+import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -27,6 +29,13 @@ public class TaskRestControllerV1 {
     public TaskDto getTaskById(@PathParam("id") final Long id) {
         Task taskById = taskService.getTaskById(id);
         return taskMapper.toDto(taskById);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public TaskDto getTaskByName(@QueryParam("name") final String name) {
+        Task taskByName = taskService.getTaskByName(name);
+        return taskMapper.toDto(taskByName);
     }
 
     @PUT

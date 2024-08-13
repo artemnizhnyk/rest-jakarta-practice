@@ -32,6 +32,15 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Task getTaskByName(final String name) {
+        Task taskByName = taskRepository.getTaskByName(name);
+        if (Objects.isNull(taskByName)) {
+            throw new ResourceNotFoundException(String.format("Task with name: %s, wasn't found", name));
+        }
+        return taskByName;
+    }
+
+    @Override
     public List<Task> getTasksByUserId(final Long userId) {
         User userById = userService.getUserById(userId);
         if (Objects.isNull(userById)) {

@@ -23,6 +23,13 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
+    public Task getTaskByName(final String name) {
+        return (Task) entityManager.createQuery("select t from Task t where t.name = :name")
+                .setParameter("name", name)
+                .getSingleResult();
+    }
+
+    @Override
     public List<Task> getTasksByUser(final User user) {
         return entityManager.createQuery(
                         "SELECT t FROM Task t WHERE t.user = :user", Task.class)

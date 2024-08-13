@@ -6,7 +6,10 @@ import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import java.util.List;
 
 public interface TaskRepository {
+
     Task getTaskById(Long id);
+
+    Task getTaskByName(String name);
 
     List<Task> getTasksByUser(User user);
 

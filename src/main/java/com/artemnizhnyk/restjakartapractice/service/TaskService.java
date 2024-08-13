@@ -8,6 +8,8 @@ public interface TaskService {
 
     Task getTaskById(final Long id);
 
+    Task getTaskByName(String username);
+
     List<Task> getTasksByUserId(final Long userId);
 
     Task createTask(final Long userId, final Task task);
