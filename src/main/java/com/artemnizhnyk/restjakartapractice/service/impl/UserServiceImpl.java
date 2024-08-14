@@ -1,7 +1,7 @@
 package com.artemnizhnyk.restjakartapractice.service.impl;
 
 import com.artemnizhnyk.restjakartapractice.domain.exception.ResourceNotFoundException;
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import jakarta.enterprise.context.ApplicationScoped;

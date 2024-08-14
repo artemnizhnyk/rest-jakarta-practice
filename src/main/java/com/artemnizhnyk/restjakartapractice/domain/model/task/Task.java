@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.domain.model.task;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

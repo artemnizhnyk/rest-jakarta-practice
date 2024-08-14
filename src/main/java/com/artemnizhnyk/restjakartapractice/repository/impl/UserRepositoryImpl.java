@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.repository.impl;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;

@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 
 public interface UserService {
 

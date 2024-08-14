@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.repository;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 
 public interface UserRepository {
 

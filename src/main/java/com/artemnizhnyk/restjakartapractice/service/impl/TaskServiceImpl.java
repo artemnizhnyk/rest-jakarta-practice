@@ -3,7 +3,7 @@ package com.artemnizhnyk.restjakartapractice.service.impl;
 import com.artemnizhnyk.restjakartapractice.domain.exception.ResourceNotFoundException;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Status;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.TaskRepository;
 import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.UserService;

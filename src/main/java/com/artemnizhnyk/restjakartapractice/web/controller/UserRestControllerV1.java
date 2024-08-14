@@ -1,7 +1,7 @@
 package com.artemnizhnyk.restjakartapractice.web.controller;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;

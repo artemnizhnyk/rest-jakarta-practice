@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.service.impl;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

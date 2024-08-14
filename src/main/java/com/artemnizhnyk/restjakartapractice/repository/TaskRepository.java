@@ -1,6 +1,6 @@
 package com.artemnizhnyk.restjakartapractice.repository;
 
-import com.artemnizhnyk.restjakartapractice.domain.model.User;
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 
 import java.util.List;

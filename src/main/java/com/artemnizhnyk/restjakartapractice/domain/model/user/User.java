@@ -1,4 +1,4 @@
-package com.artemnizhnyk.restjakartapractice.domain.model;
+package com.artemnizhnyk.restjakartapractice.domain.model.user;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import jakarta.persistence.*;
