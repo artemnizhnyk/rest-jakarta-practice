@@ -63,14 +63,6 @@ public class UserRestControllerV1 {
         return taskMapper.toDto(createdTask);
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public UserDto createUser(final UserDto userDto) {
-        User createdUser = userService.createUser(userMapper.toEntity(userDto));
-        return userMapper.toDto(createdUser);
-    }
-
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

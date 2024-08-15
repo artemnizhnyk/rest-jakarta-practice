@@ -1,17 +1,22 @@
 package com.artemnizhnyk.restjakartapractice.web.controller;
 
 
+import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
+import com.artemnizhnyk.restjakartapractice.service.AuthService;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 @Path("/v1/auth")
 public class AuthControllerV1 {
 
-//    private AuthService authService;
+    private AuthService authService;
     @Inject
     private UserService userService;
     @Inject
@@ -27,8 +32,11 @@ public class AuthControllerV1 {
 
     @POST
     @Path("/register")
-    public void register(final UserDto userDto) {
-//        return userService.createUser(userMapper.toEntity(userDto));
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserDto register(final UserDto userDto) {
+        User user = userService.createUser(userMapper.toEntity(userDto));
+        return userMapper.toDto(user);
     }
 
     @POST
