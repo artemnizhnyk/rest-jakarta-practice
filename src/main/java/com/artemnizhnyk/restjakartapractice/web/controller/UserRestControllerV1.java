@@ -9,14 +9,17 @@ import com.artemnizhnyk.restjakartapractice.service.mapper.UserMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.UserDto;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.SecurityContext;
 
 import java.util.List;
 
+@RolesAllowed("ADMIN")
 @Named
 @RequestScoped
 @Path("/v1/users")
@@ -29,6 +32,8 @@ public class UserRestControllerV1 {
     private TaskMapper taskMapper;
     @Inject
     private UserMapper userMapper;
+    @Inject
+    private SecurityContext securityContext;
 
     @GET
     @Path("/{id}")

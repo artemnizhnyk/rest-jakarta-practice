@@ -5,12 +5,15 @@ import com.artemnizhnyk.restjakartapractice.service.TaskService;
 import com.artemnizhnyk.restjakartapractice.service.mapper.TaskMapper;
 import com.artemnizhnyk.restjakartapractice.web.dto.AnswerDto;
 import com.artemnizhnyk.restjakartapractice.web.dto.TaskDto;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.SecurityContext;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Named
 @RequestScoped
 @Path("/v1/tasks")
@@ -20,6 +23,8 @@ public class TaskRestControllerV1 {
     private TaskService taskService;
     @Inject
     private TaskMapper taskMapper;
+    @Inject
+    private SecurityContext securityContext;
 
     @GET
     @Path("/{id}")
