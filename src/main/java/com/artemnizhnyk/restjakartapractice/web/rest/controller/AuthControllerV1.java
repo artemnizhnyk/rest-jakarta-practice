@@ -1,4 +1,4 @@
-package com.artemnizhnyk.restjakartapractice.web.controller;
+package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 
 
 import com.artemnizhnyk.restjakartapractice.domain.model.user.User;

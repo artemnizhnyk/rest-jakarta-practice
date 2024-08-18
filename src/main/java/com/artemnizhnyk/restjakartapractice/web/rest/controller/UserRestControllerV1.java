@@ -1,4 +1,4 @@
-package com.artemnizhnyk.restjakartapractice.web.controller;
+package com.artemnizhnyk.restjakartapractice.web.rest.controller;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.task.Task;
 import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
@@ -13,9 +13,9 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.SecurityContext;
 
 import java.util.List;
 
