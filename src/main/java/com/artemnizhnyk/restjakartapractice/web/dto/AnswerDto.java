@@ -8,7 +8,6 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class AnswerDto {
-
     private Boolean answer;
 
     public static AnswerDto makeDefault(final Boolean answer) {
