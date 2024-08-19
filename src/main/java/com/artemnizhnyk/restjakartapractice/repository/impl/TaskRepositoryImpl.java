@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -37,17 +38,20 @@ public class TaskRepositoryImpl implements TaskRepository {
                 .getResultList();
     }
 
+    @Transactional
     @Override
     public Task createTask(final Task transientTask) {
         entityManager.persist(transientTask);
         return entityManager.find(Task.class, transientTask.getId());
     }
 
+    @Transactional
     @Override
     public Task updateTask(final Task task) {
         return entityManager.merge(task);
     }
 
+    @Transactional
     @Override
     public boolean deleteTask(final Task task) {
         Task mergedTask = entityManager.merge(task);

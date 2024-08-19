@@ -2,20 +2,22 @@ package com.artemnizhnyk.restjakartapractice.domain.model.task;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "tasks")
 @Entity
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,4 +31,17 @@ public class Task {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     @ManyToOne
     private User user;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status && Objects.equals(expiresAt, task.expiresAt) && Objects.equals(user, task.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, status, expiresAt, user);
+    }
 }

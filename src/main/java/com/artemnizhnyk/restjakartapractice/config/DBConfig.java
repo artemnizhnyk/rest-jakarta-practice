@@ -13,7 +13,6 @@ import jakarta.enterprise.event.Observes;
         password = "postgres")
 @ApplicationScoped
 public class DBConfig {
-
     private void init(@Observes @Initialized(ApplicationScoped.class) Object object) {
     }
 }
