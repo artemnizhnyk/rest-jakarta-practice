@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,7 +18,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private UUID uuid = UUID.randomUUID();
+//    @Builder.Default
+//    private UUID uuid = UUID.randomUUID();
     @Column(unique = true, nullable = false)
     private String username;
     @Column(nullable = false)
