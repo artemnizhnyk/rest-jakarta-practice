@@ -2,14 +2,13 @@ package com.artemnizhnyk.restjakartapractice.repository.impl;
 
 import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Named;
+import jakarta.ejb.Stateful;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
-@Named
-@ApplicationScoped
+//@Named
+//@ApplicationScoped
+@Stateful
 public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
@@ -27,20 +26,20 @@ public class UserRepositoryImpl implements UserRepository {
                 .getSingleResult();
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public User createUser(User transientUser) {
         entityManager.persist(transientUser);
         return transientUser;
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public User updateUser(final User user) {
         return entityManager.merge(user);
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public boolean deleteUser(final User user) {
         User mergedUser = entityManager.merge(user);

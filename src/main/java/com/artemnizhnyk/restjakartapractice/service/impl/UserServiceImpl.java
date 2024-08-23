@@ -4,8 +4,8 @@ import com.artemnizhnyk.restjakartapractice.domain.exception.ResourceNotFoundExc
 import com.artemnizhnyk.restjakartapractice.domain.model.user.User;
 import com.artemnizhnyk.restjakartapractice.repository.UserRepository;
 import com.artemnizhnyk.restjakartapractice.service.UserService;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.util.Objects;
@@ -14,7 +14,8 @@ import java.util.Objects;
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 
-    @Inject
+//    @Inject
+    @EJB
     private UserRepository userRepository;
 
     @Override
